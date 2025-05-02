@@ -1,76 +1,59 @@
-// Initialize ScrollReveal for scroll animations
+// Initialize ScrollReveal for animations
 const sr = ScrollReveal({
     origin: 'bottom',
-    distance: '20px',
+    distance: '60px',
     duration: 1000,
     delay: 200,
-    easing: 'ease-out',
     reset: false
 });
 
-// Animate product cards
-sr.reveal('.product-card', {
-    interval: 100,
-    scale: 0.95
-});
+// Apply animations to different sections
+sr.reveal('.hero-content', { origin: 'left' });
+sr.reveal('.hero-image', { origin: 'right', delay: 400 });
+sr.reveal('.section-title', { delay: 100 });
+sr.reveal('.product-card', { interval: 200 });
+sr.reveal('.testimonial-card', { interval: 200 });
+sr.reveal('.about-content', { origin: 'left' });
+sr.reveal('.about-image', { origin: 'right', delay: 400 });
 
-// Animate testimonial cards
-sr.reveal('.testimonial-card', {
-    interval: 100,
-    scale: 0.95
-});
-
-// Animate section headings
-sr.reveal('h2', {
-    origin: 'left',
-    distance: '50px',
-    duration: 1200
-});
-
-// Handle sticky navigation
+// Navbar scroll behavior
 const navbar = document.getElementById('navbar');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    // Add/remove background when scrolling
-    if (currentScroll > 50) {
-        navbar.classList.add('bg-gray-900/95', 'backdrop-blur-sm', 'shadow-lg');
+    if (currentScroll <= 0) {
+        navbar.classList.remove('bg-gray-900');
+        navbar.classList.add('bg-transparent');
     } else {
-        navbar.classList.remove('bg-gray-900/95', 'backdrop-blur-sm', 'shadow-lg');
+        navbar.classList.add('bg-gray-900');
+        navbar.classList.remove('bg-transparent');
     }
 
-    // Hide/show navbar based on scroll direction
-    if (currentScroll > lastScroll && currentScroll > 500) {
-        navbar.style.transform = 'translateY(-100%)';
+    if (currentScroll > lastScroll && currentScroll > 80) {
+        navbar.classList.add('-translate-y-full');
     } else {
-        navbar.style.transform = 'translateY(0)';
+        navbar.classList.remove('-translate-y-full');
     }
-    
+
     lastScroll = currentScroll;
 });
 
-// Mobile menu functionality
-const mobileMenuButton = document.getElementById('mobile-menu-button');
+// Mobile menu toggle
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
+let isMenuOpen = false;
 
-mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    // Add slide animation
-    if (!mobileMenu.classList.contains('hidden')) {
+mobileMenuBtn.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+    if (isMenuOpen) {
         mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
     } else {
         mobileMenu.style.maxHeight = '0';
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
     }
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.style.maxHeight = '0';
-    });
 });
 
 // Smooth scroll for navigation links
@@ -79,66 +62,79 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const navHeight = navbar.offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
+            // Close mobile menu if open
+            if (isMenuOpen) {
+                mobileMenu.style.maxHeight = '0';
+                isMenuOpen = false;
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
         }
     });
 });
 
-// Parallax effect for about section background
-window.addEventListener('scroll', () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection && window.innerWidth >= 768) {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * 0.5;
-        aboutSection.style.backgroundPosition = `center ${rate}px`;
-    }
-});
+// Active navigation link highlighting
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
 
-// Add active state to navigation links based on scroll position
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
-
+function highlightNavLink() {
+    const scrollY = window.pageYOffset;
+    
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
-            const currentSection = section.getAttribute('id');
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             navLinks.forEach(link => {
-                link.classList.remove('text-indigo-400');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('text-indigo-400');
+                link.classList.remove('text-indigo-500');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('text-indigo-500');
                 }
             });
         }
     });
+}
+
+window.addEventListener('scroll', highlightNavLink);
+
+// Product card hover effects
+const productCards = document.querySelectorAll('.product-card');
+
+productCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.querySelectorAll('ul li').forEach((li, index) => {
+            li.style.transitionDelay = `${index * 100}ms`;
+        });
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.querySelectorAll('ul li').forEach(li => {
+            li.style.transitionDelay = '0ms';
+        });
+    });
 });
 
-// Intersection Observer for fade-in animations
-const fadeElements = document.querySelectorAll('.product-card, .testimonial-card');
-const fadeOptions = {
-    threshold: 0.3,
-    rootMargin: '0px'
-};
+// Parallax effect for background images
+let parallaxElements = document.querySelectorAll('.parallax');
 
-const fadeOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
+window.addEventListener('scroll', () => {
+    parallaxElements.forEach(element => {
+        let speed = element.dataset.speed || 0.5;
+        let yPos = -(window.pageYOffset * speed);
+        element.style.backgroundPosition = `center ${yPos}px`;
     });
-}, fadeOptions);
+});
 
-fadeElements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(20px)';
-    element.style.transition = 'all 0.6s ease-out';
-    fadeOnScroll.observe(element);
+// Initialize AOS for additional animations
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        duration: 1000,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+    });
 }); 

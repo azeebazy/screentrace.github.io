@@ -44,22 +44,27 @@
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         <div class="absolute inset-0 bg-hero-pattern bg-cover bg-center">
-            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-gray-900/90"></div>
         </div>
         <div class="relative z-10 container mx-auto px-4 text-center">
             <div class="animate-fadeDown">
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-indigo-400 to-purple-500 text-transparent bg-clip-text">
                     ScreenTrace
                 </h1>
-                <p class="text-2xl md:text-3xl mb-4 text-gray-200">
-                    Empowering Innovation with Intelligent Screen Tracking Solutions
+                <p class="text-2xl md:text-3xl mb-4 text-gray-200 font-light">
+                    Clarity Through Capture. Insight Through Intelligence.
                 </p>
-                <p class="text-lg md:text-xl mb-8 text-gray-300">
-                    Revolutionize your workflow and boost productivity with ScreenTrace
+                <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-3xl mx-auto">
+                    Leading the future of screen intelligence and AI-enhanced workflows. Transform how you monitor, analyze, and optimize digital interactions.
                 </p>
-                <a href="#products" class="inline-block px-8 py-4 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105">
-                    Discover Our Products
-                </a>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#products" class="inline-block px-8 py-4 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105">
+                        Discover Our Products
+                    </a>
+                    <a href="#contact" class="inline-block px-8 py-4 bg-transparent hover:bg-gray-800 border-2 border-indigo-400 rounded-full text-white font-semibold transition-all duration-300 transform hover:scale-105">
+                        Schedule a Demo
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -88,47 +93,130 @@
                 Our Products
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product Cards -->
-                <div class="product-card bg-gray-800 rounded-xl p-6 transform transition-all duration-300 hover:scale-105">
-                    <div class="text-indigo-500 text-4xl mb-4">🔍</div>
-                    <h3 class="text-2xl font-bold mb-3">ScreenTrace Scope</h3>
-                    <p class="text-gray-400 mb-4">Advanced screen monitoring and analytics for enhanced productivity tracking.</p>
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Learn More →</a>
+                <!-- ScreenTrace Scope -->
+                <div class="product-card bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ScreenTrace Scope" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="text-indigo-400 text-3xl">🔍</div>
+                            <h3 class="text-2xl font-bold text-white">ScreenTrace Scope</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Track, analyze, and elevate remote team performance with real-time screen visibility and productivity metrics.</p>
+                        <ul class="text-gray-400 mb-6 space-y-2">
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Real-time team activity monitoring</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Productivity analytics dashboard</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Live thumbnail grid view</li>
+                        </ul>
+                        <a href="#" class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-semibold transition-all duration-300">Learn More →</a>
+                    </div>
                 </div>
 
-                <div class="product-card bg-gray-800 rounded-xl p-6 transform transition-all duration-300 hover:scale-105">
-                    <div class="text-indigo-500 text-4xl mb-4">✏️</div>
-                    <h3 class="text-2xl font-bold mb-3">ScreenTrace Chalk</h3>
-                    <p class="text-gray-400 mb-4">Interactive screen annotation tools for effective communication.</p>
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Learn More →</a>
+                <!-- ScreenTrace Chalk -->
+                <div class="product-card bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ScreenTrace Chalk" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="text-indigo-400 text-3xl">✏️</div>
+                            <h3 class="text-2xl font-bold text-white">ScreenTrace Chalk</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Teach smarter with screen recording tools designed for clarity, feedback, and interactive learning.</p>
+                        <ul class="text-gray-400 mb-6 space-y-2">
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Digital whiteboard overlay</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Interactive annotations</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Webcam integration</li>
+                        </ul>
+                        <a href="#" class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-semibold transition-all duration-300">Learn More →</a>
+                    </div>
                 </div>
 
-                <div class="product-card bg-gray-800 rounded-xl p-6 transform transition-all duration-300 hover:scale-105">
-                    <div class="text-indigo-500 text-4xl mb-4">🔒</div>
-                    <h3 class="text-2xl font-bold mb-3">ScreenTrace Vault</h3>
-                    <p class="text-gray-400 mb-4">Secure storage and management of screen recordings and data.</p>
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Learn More →</a>
+                <!-- ScreenTrace Vault -->
+                <div class="product-card bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ScreenTrace Vault" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="text-indigo-400 text-3xl">🔒</div>
+                            <h3 class="text-2xl font-bold text-white">ScreenTrace Vault</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Capture every screen event securely for audit trails, compliance, and enterprise accountability.</p>
+                        <ul class="text-gray-400 mb-6 space-y-2">
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Enterprise-grade security</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Compliance archiving</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Audit trail management</li>
+                        </ul>
+                        <a href="#" class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-semibold transition-all duration-300">Learn More →</a>
+                    </div>
                 </div>
 
-                <div class="product-card bg-gray-800 rounded-xl p-6 transform transition-all duration-300 hover:scale-105">
-                    <div class="text-indigo-500 text-4xl mb-4">⚡</div>
-                    <h3 class="text-2xl font-bold mb-3">ScreenTrace Flow</h3>
-                    <p class="text-gray-400 mb-4">Streamlined workflow automation for screen-based processes.</p>
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Learn More →</a>
+                <!-- ScreenTrace Flow -->
+                <div class="product-card bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ScreenTrace Flow" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="text-indigo-400 text-3xl">⚡</div>
+                            <h3 class="text-2xl font-bold text-white">ScreenTrace Flow</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Create compelling tutorials and content with AI-enhanced screen recording and auto-structured timelines.</p>
+                        <ul class="text-gray-400 mb-6 space-y-2">
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> AI-powered editing</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Auto-generated voiceovers</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Smart content structuring</li>
+                        </ul>
+                        <a href="#" class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-semibold transition-all duration-300">Learn More →</a>
+                    </div>
                 </div>
 
-                <div class="product-card bg-gray-800 rounded-xl p-6 transform transition-all duration-300 hover:scale-105">
-                    <div class="text-indigo-500 text-4xl mb-4">👁️</div>
-                    <h3 class="text-2xl font-bold mb-3">ScreenTrace Lens</h3>
-                    <p class="text-gray-400 mb-4">AI-powered screen analysis and pattern recognition.</p>
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Learn More →</a>
+                <!-- ScreenTrace Lens -->
+                <div class="product-card bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ScreenTrace Lens" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="text-indigo-400 text-3xl">👁️</div>
+                            <h3 class="text-2xl font-bold text-white">ScreenTrace Lens</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">See through the eyes of your users with session replays, behavior heatmaps, and UX insights.</p>
+                        <ul class="text-gray-400 mb-6 space-y-2">
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Session replay analytics</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Behavior heatmaps</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Funnel visualization</li>
+                        </ul>
+                        <a href="#" class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-semibold transition-all duration-300">Learn More →</a>
+                    </div>
                 </div>
 
-                <div class="product-card bg-gray-800 rounded-xl p-6 transform transition-all duration-300 hover:scale-105">
-                    <div class="text-indigo-500 text-4xl mb-4">🎯</div>
-                    <h3 class="text-2xl font-bold mb-3">ScreenTrace Pilot</h3>
-                    <p class="text-gray-400 mb-4">Automated screen navigation and task execution system.</p>
-                    <a href="#" class="text-indigo-400 hover:text-indigo-300">Learn More →</a>
+                <!-- ScreenTrace Pilot -->
+                <div class="product-card bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ScreenTrace Pilot" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <div class="text-indigo-400 text-3xl">🎯</div>
+                            <h3 class="text-2xl font-bold text-white">ScreenTrace Pilot</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300 mb-4">Automate your QA with AI: record tests, generate documentation, and file bug reports instantly.</p>
+                        <ul class="text-gray-400 mb-6 space-y-2">
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Automated test recording</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> AI-driven bug reporting</li>
+                            <li class="flex items-center"><span class="text-indigo-400 mr-2">✓</span> Jira integration</li>
+                        </ul>
+                        <a href="#" class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-semibold transition-all duration-300">Learn More →</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -143,7 +231,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="testimonial-card bg-gray-900 p-8 rounded-xl relative">
                     <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="John D." class="w-12 h-12 rounded-full border-2 border-indigo-500">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=4f46e5" alt="John D." class="w-12 h-12 rounded-full border-2 border-indigo-500 bg-gray-800">
                     </div>
                     <div class="text-indigo-400 text-4xl mb-4 text-center">❝</div>
                     <p class="text-gray-300 mb-6">"ScreenTrace has completely transformed the way we track team productivity. The insights are invaluable and help us stay on top of every project. The automation features have increased our efficiency by 40%."</p>
@@ -174,7 +262,7 @@
 
                 <div class="testimonial-card bg-gray-900 p-8 rounded-xl relative">
                     <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="Sarah M." class="w-12 h-12 rounded-full border-2 border-indigo-500">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah&backgroundColor=4f46e5" alt="Sarah M." class="w-12 h-12 rounded-full border-2 border-indigo-500 bg-gray-800">
                     </div>
                     <div class="text-indigo-400 text-4xl mb-4 text-center">❝</div>
                     <p class="text-gray-300 mb-6">"The automation capabilities have saved us countless hours. It's like having an extra team member dedicated to optimization. We've seen a 60% reduction in manual task time since implementing ScreenTrace."</p>
@@ -205,7 +293,7 @@
 
                 <div class="testimonial-card bg-gray-900 p-8 rounded-xl relative">
                     <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="Michael R." class="w-12 h-12 rounded-full border-2 border-indigo-500">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Michael&backgroundColor=4f46e5" alt="Michael R." class="w-12 h-12 rounded-full border-2 border-indigo-500 bg-gray-800">
                     </div>
                     <div class="text-indigo-400 text-4xl mb-4 text-center">❝</div>
                     <p class="text-gray-300 mb-6">"As an educator, ScreenTrace has revolutionized how I create and share content with my students. The interface is intuitive and powerful. Student engagement has increased by 45% since we started using it."</p>
@@ -243,7 +331,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center md:text-left">
                     <h3 class="text-xl font-bold mb-4">ScreenTrace</h3>
-                    <p class="text-gray-400">Empowering digital innovation</p>
+                    <p class="text-gray-400">Transforming Digital Workflows Through Intelligent Screen Analytics</p>
                 </div>
                 <div class="text-center">
                     <h4 class="text-lg font-semibold mb-4">Legal</h4>
