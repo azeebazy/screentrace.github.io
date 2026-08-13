@@ -953,21 +953,90 @@ body.is-touch .rail {
   max-width: 820px;
 }
 
-.contact__mail {
-  margin-top: 28px;
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 4vw, 3rem);
-  letter-spacing: -0.04em;
-  border-bottom: 1px solid rgba(143, 120, 248, 0.4);
-  padding-bottom: 8px;
+.mail-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 32px;
 }
 
-.contact__mail svg {
-  width: 28px;
-  height: 28px;
+.mail-list li {
+  display: grid;
+  gap: 4px;
+}
+
+.mail-list span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+}
+
+.contact__mail {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.2vw, 2.15rem);
+  letter-spacing: -0.04em;
+  border-bottom: 1px solid rgba(143, 120, 248, 0.4);
+  padding-bottom: 4px;
+}
+
+.socials,
+.footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.socials {
+  margin-top: 32px;
+}
+
+.social {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  color: #fff;
+}
+
+.social svg {
+  width: 22px;
+  height: 22px;
+}
+
+.social--linkedin {
+  background: #0a66c2;
+}
+
+.social--x {
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.social:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+}
+
+.footer__socials .social {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 0;
+}
+
+.footer__socials .social svg {
+  width: 18px;
+  height: 18px;
+}
+
+.footer__grid a.social {
+  display: grid;
+  margin-bottom: 0;
 }
 
 .footer {
@@ -985,7 +1054,7 @@ body.is-touch .rail {
 
 .footer__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-bottom: 48px;
 }
