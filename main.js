@@ -54,7 +54,7 @@
     initMagnetic();
     initHero();
     initScrollCopy();
-    initProducts();
+    initProducts(lenis);
     initRail();
   };
 
@@ -255,7 +255,7 @@
     });
   };
 
-  const initProducts = () => {
+  const initProducts = (lenis) => {
     const theater = document.getElementById("product-stage");
     if (!theater) return;
 
@@ -265,9 +265,15 @@
     const scan = theater.querySelector(".theater__scan");
     let current = "lcd";
     let busy = false;
+    let pending = null;
 
     const show = (id) => {
-      if (!order.includes(id) || id === current || busy) return;
+      if (!order.includes(id) || id === current) return;
+      if (busy) {
+        pending = id;
+        return;
+      }
+
       const prev = document.getElementById(`product-${current}`);
       const next = document.getElementById(`product-${id}`);
       if (!prev || !next) return;
@@ -286,6 +292,13 @@
         gsap.set([prev, next], { clearProps: "opacity,y,visibility,pointerEvents" });
         current = id;
         busy = false;
+        if (pending && pending !== current) {
+          const queued = pending;
+          pending = null;
+          show(queued);
+        } else {
+          pending = null;
+        }
       };
 
       if (reduceMotion) {
@@ -294,31 +307,58 @@
       }
 
       const width = theater.querySelector(".theater__viewport").clientWidth;
-      gsap.set(next, { visibility: "visible", pointerEvents: "none", opacity: 0, y: 32 });
+      gsap.set(next, { visibility: "visible", pointerEvents: "none", opacity: 0, y: 28 });
 
       gsap.timeline({ onComplete: finish })
         .set(scan, { x: 0, opacity: 1 })
-        .to(scan, { x: width, duration: 0.55, ease: "power2.inOut" }, 0)
-        .to(prev, { opacity: 0, y: -20, duration: 0.32, ease: "power2.in" }, 0)
-        .to(next, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.16)
-        .to(scan, { opacity: 0, duration: 0.2 }, 0.45);
+        .to(scan, { x: width, duration: 0.4, ease: "power2.inOut" }, 0)
+        .to(prev, { opacity: 0, y: -16, duration: 0.24, ease: "power2.in" }, 0)
+        .to(next, { opacity: 1, y: 0, duration: 0.38, ease: "power3.out" }, 0.12)
+        .to(scan, { opacity: 0, duration: 0.16 }, 0.32);
     };
 
+    const goTo = (id) => {
+      const index = order.indexOf(id);
+      if (index < 0) return;
+      const pin = ScrollTrigger.getById("products-pin");
+      if (pin && lenis) {
+        const progress = Math.min(0.999, (index + 0.5) / order.length);
+        lenis.scrollTo(pin.start + (pin.end - pin.start) * progress, { duration: 0.85 });
+        return;
+      }
+      show(id);
+    };
+
+    if (!reduceMotion) {
+      ScrollTrigger.create({
+        id: "products-pin",
+        trigger: theater,
+        start: "top 88px",
+        end: () => `+=${Math.round(window.innerHeight * 2.2)}`,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const index = Math.min(order.length - 1, Math.floor(self.progress * order.length));
+          show(order[index]);
+        },
+      });
+    }
+
     dials.forEach((dial) => {
-      dial.addEventListener("click", () => show(dial.dataset.product));
+      dial.addEventListener("click", () => goTo(dial.dataset.product));
     });
 
     theater.querySelectorAll("[data-dir]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        const i = order.indexOf(current);
-        const next = order[(i + Number(btn.dataset.dir) + order.length) % order.length];
-        show(next);
+        const next = order[(order.indexOf(current) + Number(btn.dataset.dir) + order.length) % order.length];
+        goTo(next);
       });
     });
 
     document.querySelectorAll("[data-product]").forEach((el) => {
       if (el.classList.contains("dial")) return;
-      el.addEventListener("click", () => show(el.dataset.product));
+      el.addEventListener("click", () => goTo(el.dataset.product));
     });
 
     window.addEventListener("keydown", (e) => {
@@ -326,8 +366,8 @@
       const rect = theater.getBoundingClientRect();
       if (rect.bottom < 80 || rect.top > window.innerHeight - 80) return;
       e.preventDefault();
-      const i = order.indexOf(current);
-      show(order[(i + (e.key === "ArrowRight" ? 1 : -1) + order.length) % order.length]);
+      const next = order[(order.indexOf(current) + (e.key === "ArrowRight" ? 1 : -1) + order.length) % order.length];
+      goTo(next);
     });
 
     gsap.set(panels.filter(Boolean), { clearProps: "x" });
