@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Gradient for the main circle -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF7F87;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B85C8A;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient for accents -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E6D8FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CFFFE5;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="90" fill="url(#mainGradient)" opacity="0.1"/>
+  
+  <!-- Main logo shape - stylized droplet/face -->
+  <g filter="url(#glow)">
+    <!-- Outer droplet shape -->
+    <path d="M100 30 
+             C85 30, 70 45, 70 70
+             C70 85, 70 100, 75 115
+             C80 130, 90 145, 100 150
+             C110 145, 120 130, 125 115
+             C130 100, 130 85, 130 70
+             C130 45, 115 30, 100 30 Z" 
+          fill="url(#mainGradient)" 
+          stroke="#FFFFFF" 
+          stroke-width="3"/>
+    
+    <!-- Inner glow -->
+    <ellipse cx="100" cy="80" rx="25" ry="35" fill="url(#accentGradient)" opacity="0.5"/>
+    
+    <!-- Sparkle dots -->
+    <circle cx="85" cy="70" r="4" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="115" cy="70" r="4" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="100" cy="60" r="3" fill="#FFFFFF" opacity="0.9"/>
+    
+    <!-- Smile/glow arc -->
+    <path d="M85 100 Q100 110, 115 100" 
+          stroke="#FFFFFF" 
+          stroke-width="3" 
+          stroke-linecap="round" 
+          fill="none" 
+          opacity="0.8"/>
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="60" cy="60" r="6" fill="#CFFFE5" opacity="0.6"/>
+  <circle cx="140" cy="80" r="5" fill="#E6D8FF" opacity="0.6"/>
+  <circle cx="55" cy="130" r="4" fill="#FF7F87" opacity="0.4"/>
+  <circle cx="145" cy="125" r="5" fill="#FFD700" opacity="0.5"/>
+  
+  <!-- Bottom text arc (optional - can be removed for simpler logo) -->
+  <text x="100" y="180" font-family="Playfair Display, serif" font-size="14" font-weight="600" text-anchor="middle" fill="url(#mainGradient)" opacity="0.8">
+    PeauTrace
+  </text>
+</svg>
+
